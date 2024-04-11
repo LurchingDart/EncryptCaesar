@@ -17,7 +17,7 @@ export default function Home() {
                   </div>
                   <div className="w-6 h-32 bg-foreground"></div>
               </div>
-              <section className="w-10/12 h-full shrink-0 flex flex-col justify-center items-center gap-24">
+              <section className="w-10/12 h-full shrink-0 flex flex-col justify-center items-center gap-16 2xl:gap-24">
                   <h1 className={`${fontSpaceArmor.className} text-9xl leading-none text-center`}>
                       Encrypt
                       Caesar
