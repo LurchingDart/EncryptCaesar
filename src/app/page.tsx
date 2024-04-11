@@ -24,12 +24,16 @@ export default function Home() {
                   </h1>
                   <div className="flex w-full">
                       <div className="flex flex-1 justify-center">
-                          <MessageForm Label="Message" Placeholder="Enter the message you want to encrypt"
-                                       isLocked={true}/>
+                          <MessageForm
+                              Label="Message"
+                              Placeholder="Enter the message you want to encrypt"
+                              isLocked={true}/>
                       </div>
                       <div className="flex flex-1 justify-center">
-                          <MessageForm Label="Caesar Cipher" Placeholder="Enter the message you want to decrypt"
-                                       isLocked={false}/>
+                          <MessageForm
+                              Label="Caesar Cipher"
+                              Placeholder="Enter the message you want to decrypt"
+                              isLocked={false}/>
                       </div>
                   </div>
               </section>
