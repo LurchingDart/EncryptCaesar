@@ -104,7 +104,7 @@ export function MessageForm({Label, Placeholder, isLocked}: {Label: string, Plac
                                                         </div>
                                                         <div className="grid gap-2">
                                                             <div className="grid grid-cols-3 items-center gap-4">
-                                                                <Label htmlFor="shift">Shift</Label>
+                                                                Shift
                                                                 <FormField
                                                                     control={form.control}
                                                                     name="shift"
