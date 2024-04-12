@@ -16,9 +16,9 @@ export default function Header() {
 
     return (
         <header className="w-full pt-7">
-            <div className="container flex h-14 max-w-screen-2xl items-center justify-center gap-14">
+            <nav className="container flex h-14 max-w-screen-2xl items-center justify-center gap-14">
                 {navLinks.map((link) => {
-                    const isActive = pathname.startsWith(link.href);
+                    const isActive = pathname === link.href;
                     return (
                         <Link href={link.href} key={link.name}>
                             <Button variant="link">
@@ -29,9 +29,7 @@ export default function Header() {
                         </Link>
                     )
                 })}
-            </div>
+            </nav>
         </header>
     )
 }
-
-//className="font-heading line-through text-4xl"
