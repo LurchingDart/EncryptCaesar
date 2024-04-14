@@ -1,4 +1,6 @@
 import type {Metadata} from "next";
+import {Analytics} from "@vercel/analytics/react";
+import {SpeedInsights} from "@vercel/speed-insights/react";
 import "@/styles/globals.css";
 import { fontChakra, fontOrbitron } from "@/styles/fonts";
 import { cn } from "@/utils/cn"
@@ -24,6 +26,8 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
             {children}
             <Footer/>
             <BackgroundMatrix/>
+        <Analytics />
+        <SpeedInsights />
         </body>
         </html>
     );
