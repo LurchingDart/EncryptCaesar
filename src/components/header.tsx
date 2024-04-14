@@ -15,7 +15,7 @@ export default function Header() {
 
 
     return (
-        <header className="w-full pt-7">
+        <header className="w-full pt-7 relative z-20">
             <nav className="container flex h-14 max-w-screen-2xl items-center justify-center gap-14">
                 {navLinks.map((link) => {
                     const isActive = pathname === link.href;

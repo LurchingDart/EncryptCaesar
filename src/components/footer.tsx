@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="flex w-full justify-between items-end mb-7 px-16">
+        <footer className="flex w-full justify-between items-end mb-7 px-16 relative z-20">
             <Link href={"https://github.com/LurchingDart/EncryptCaesar"}>
                 <p className={`${fontSpaceArmor.className} text-4xl leading-none text-center`}>
                     GitHub
