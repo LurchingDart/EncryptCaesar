@@ -4,7 +4,7 @@ import { MatrixEffect } from "@/components/animations/matrixEffect";
 
 export function BackgroundMatrix() {
     return (
-        <div className="h-lvh w-full relative">
+        <div className="fixed top-0 left-0 h-full w-full">
             <MatrixEffect
                 animationSpeed={5}
                 containerClassName="bg-transparent"
