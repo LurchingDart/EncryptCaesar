@@ -26,6 +26,9 @@ const config = {
       body: "var(--font-Chakra)",
     },
     extend: {
+      fontSize: {
+        'fluid': 'clamp(2rem, 7vw, 10rem)',
+      },
       colors: {
         border: "var(--border)",
         input: "var(--input)",
