@@ -12,7 +12,7 @@ export default function Footer() {
             </Link>
             <div className="flex justify-end">
                 <Link href={"https://github.com/LurchingDart"}>
-                    <Image src="/assets/footerSticker.svg" alt="Footer Sticker" width={407} height={50}/>
+                    <Image src="/assets/footerSticker.svg" alt="Footer Sticker" width={407} height={129}/>
                 </Link>
             </div>
         </footer>
