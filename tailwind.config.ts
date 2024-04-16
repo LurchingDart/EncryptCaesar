@@ -66,6 +66,19 @@ const config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      screens:{
+        '4xs': '320px',
+        '2xs': '375px',
+        'xs': '425px',
+        '2sm': '480px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1366px',
+        '4xl': '1440px',
+        '6xl': '1920px',
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
