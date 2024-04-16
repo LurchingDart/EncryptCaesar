@@ -4,13 +4,17 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="flex w-full justify-between items-end mb-7 px-16 relative z-20">
-            <Link href={"https://github.com/LurchingDart/EncryptCaesar"}>
-                <p className={`${fontSpaceArmor.className} text-4xl leading-none text-center`}>
+        <footer className="flex flex-col space-y-8 w-full justify-between px-7 relative z-20 sm:flex-row sm:pb-7">
+            <Link href={"https://github.com/LurchingDart/EncryptCaesar"} className="flex justify-start items-end">
+                <p className={`${fontSpaceArmor.className} sm:text-2xl leading-none text-center`}>
                     GitHub
                 </p>
             </Link>
-            <Image src="/assets/footerSticker.svg" alt="Footer Sticker" width={407} height={50}/>
+            <div className="flex justify-end">
+                <Link href={"https://github.com/LurchingDart"}>
+                    <Image src="/assets/footerSticker.svg" alt="Footer Sticker" width={407} height={50}/>
+                </Link>
+            </div>
         </footer>
     )
 }
