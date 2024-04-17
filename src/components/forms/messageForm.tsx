@@ -9,7 +9,6 @@ import { caesarCipher } from "@/utils/caesarCipher";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import {
     Form,
     FormControl,
@@ -24,7 +23,8 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 //Icons
-import { FrameIcon, WidthIcon, LockClosedIcon, LockOpen1Icon } from "@radix-ui/react-icons"
+import { FrameIcon, WidthIcon, LockClosedIcon, LockOpen1Icon, DotsVerticalIcon } from "@radix-ui/react-icons"
+import {Switch} from "@/components/ui/switch";
 
 const FormSchema = z.object({
     message: z.string()
@@ -48,7 +48,7 @@ const FormSchema = z.object({
         }),
 })
 
-export function MessageForm({Label, Placeholder, isLocked}: {Label: string, Placeholder: string, isLocked: boolean}) {
+export function MessageForm({Label, Placeholder, isLocked, id}: {Label: string, Placeholder: string, isLocked: boolean, id: string}) {
 
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
@@ -77,17 +77,17 @@ export function MessageForm({Label, Placeholder, isLocked}: {Label: string, Plac
                     name="message"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel className="text-xl font-heading">{Label}</FormLabel>
+                            <FormLabel className="text-xl font-heading" htmlFor={id}>{Label}</FormLabel>
                             <FormControl>
                                 <div className="border-foreground border rounded-md px-3 py-2 flex flex-col gap-5 bg-background">
                                     <Textarea
                                         placeholder={Placeholder}
                                         className="resize-none"
+                                        id={id}
                                         {...field}>
                                     </Textarea>
                                     <div className="flex justify-between">
-                                        <div className="flex gap-4">
-                                            {/*Cambiar a popover*/}
+                                        <div className="hidden 2sm:flex gap-4">
                                             <Popover>
                                                 <PopoverTrigger asChild>
                                                     <Button>
@@ -123,25 +123,101 @@ export function MessageForm({Label, Placeholder, isLocked}: {Label: string, Plac
                                                     </div>
                                                 </PopoverContent>
                                             </Popover>
-                                            <Button
-                                                type="reset"
-                                            >
-                                                Direction <WidthIcon className="ml-2 h-4 w-4" color="#EFFFFA"/>
-                                            </Button>
+                                            <Popover>
+                                                <PopoverTrigger asChild>
+                                                    <Button
+                                                        type="reset"
+                                                    >
+                                                        Direction <WidthIcon className="ml-2 h-4 w-4" color="#EFFFFA"/>
+                                                    </Button>
+                                                </PopoverTrigger>
+                                                <PopoverContent className="w-80">
+                                                    <div className="grid gap-4">
+                                                        <div className="space-y-2">
+                                                            <h4 className="font-medium leading-none">Shift</h4>
+                                                            <p className="text-sm text-muted-foreground">
+                                                                Set the direction value for the Caesar cipher.
+                                                            </p>
+                                                        </div>
+                                                        <div className="grid gap-2">
+                                                            <div className="grid grid-cols-3 items-center gap-4">
+                                                                Left
+                                                                <Switch id="airplane-mode" />
+                                                                Right
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </PopoverContent>
+                                            </Popover>
+                                        </div>
+                                        <div className="flex 2sm:hidden">
+                                            <Popover>
+                                                <PopoverTrigger asChild>
+                                                    <Button>
+                                                        Options <DotsVerticalIcon className="ml-2 h-4 w-4" color="#EFFFFA" />
+                                                    </Button>
+                                                </PopoverTrigger>
+                                                <PopoverContent className="flex flex-col items-center w-80">
+                                                    <div className="grid gap-4">
+                                                        <div className="space-y-2">
+                                                            <h4 className="font-medium leading-none">Direction</h4>
+                                                            <p className="text-sm text-muted-foreground">
+                                                                Set the direction value for the Caesar cipher.
+                                                            </p>
+                                                        </div>
+                                                        <div className="grid gap-2">
+                                                            <div className="grid grid-cols-3 items-center gap-4">
+                                                                Left
+                                                                <Switch id="airplane-mode"/>
+                                                                Right
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="bg-border w-full h-[1px] my-10"></div>
+                                                    <div className="grid gap-4">
+                                                        <div className="space-y-2">
+                                                            <h4 className="font-medium leading-none">Shift</h4>
+                                                            <p className="text-sm text-muted-foreground">
+                                                                Set the shift value for the Caesar cipher.
+                                                            </p>
+                                                        </div>
+                                                        <div className="grid gap-2">
+                                                            <div className="grid grid-cols-3 items-center gap-4">
+                                                                Shift
+                                                                <FormField
+                                                                    control={form.control}
+                                                                    name="shift"
+                                                                    render={({field}) => (
+                                                                        <Input
+                                                                            id="shift"
+                                                                            type="number"
+                                                                            defaultValue={3}
+                                                                            className="col-span-2 h-8"
+                                                                            {...field}
+                                                                        />
+                                                                    )}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </PopoverContent>
+                                            </Popover>
                                         </div>
                                         <div>
                                             <Button
                                                 type="button"
                                                 size="icon"
-                                                onClick={ isLocked ? encryptMessage : decryptMessage }
+                                                onClick={isLocked ? encryptMessage : decryptMessage}
+                                                title={isLocked ? "Encrypt" : "Decrypt"}
                                             >
-                                                {isLocked ? <LockClosedIcon className="h-4 w-4" color="#EFFFFA"/> : <LockOpen1Icon className="h-4 w-4" color="#EFFFFA"/>}
+                                                {isLocked ? <LockClosedIcon className="h-4 w-4" color="#EFFFFA"/> :
+                                                    <LockOpen1Icon className="h-4 w-4" color="#EFFFFA"/>}
                                             </Button>
                                         </div>
                                     </div>
                                 </div>
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage/>
                         </FormItem>
                     )}
                 />
