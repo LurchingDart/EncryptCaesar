@@ -15,14 +15,14 @@ export default function Header() {
 
 
     return (
-        <header className="w-full pt-7 relative z-20">
-            <nav className="container flex h-14 max-w-screen-2xl items-center justify-center gap-14">
+        <header className="flex w-full relative z-20">
+            <nav className="container flex h-14 max-w-screen-2xl items-center justify-center sm:gap-5 lg:gap-14">
                 {navLinks.map((link) => {
                     const isActive = pathname === link.href;
                     return (
                         <Link href={link.href} key={link.name}>
                             <Button variant="link">
-                                <span className={isActive ? "font-heading line-through text-4xl" : "font-heading text-4xl"}>
+                                <span className={isActive ? "font-heading line-through text-fluid-header" : "font-heading text-fluid-header"}>
                                     {link.name}
                                 </span>
                             </Button>

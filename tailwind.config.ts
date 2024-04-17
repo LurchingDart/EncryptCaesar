@@ -28,6 +28,7 @@ const config = {
     extend: {
       fontSize: {
         'fluid': 'clamp(2rem, 7vw, 10rem)',
+        'fluid-header': 'clamp(1rem, 4vw, 2.5rem)',
       },
       colors: {
         border: "var(--border)",
